@@ -130,6 +130,14 @@ class LazyImporter(object):
 
   @utils.classproperty
   @classmethod
+  def tifffile(cls):
+    try:
+      _try_import("skimage.external.tifffile")
+    except ImportError:
+      return _try_import("tifffile")
+
+  @utils.classproperty
+  @classmethod
   def tensorflow_data_validation(cls):
     return _try_import("tensorflow_data_validation")
 
